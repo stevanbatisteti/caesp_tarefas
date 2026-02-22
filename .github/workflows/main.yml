@@ -23,4 +23,4 @@ jobs:
           pip install selenium webdriver-manager requests
 
       - name: Executar Bot
-        run: python main.py
+        run: python Monitor_de_Tarefas.py
