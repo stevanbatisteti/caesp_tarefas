@@ -1,0 +1,26 @@
+name: Bot CAESP Diário
+
+on:
+  schedule:
+    # 18:00 UTC corresponde às 15:00 de Brasília
+    - cron: '0 18 * * *'
+  workflow_dispatch: # Botão para poderes testar manualmente quando quiseres
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar código do repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar bibliotecas
+        run: |
+          pip install selenium webdriver-manager requests
+
+      - name: Executar Bot
+        run: python main.py
