@@ -80,4 +80,6 @@ if materias_em_casa:
     enviar_notificacao(titulo_alerta, corpo_alerta)
 else:
     print("✅ Nenhuma tarefa para hoje. Enviando confirmação de execução.")
-    enviar_notificacao(f"✅ TUDO LIMPO ({hoje})", "Busca concluída: Nenhuma tarefa 'Em Casa' encontrada.")
+    # Texto alterado conforme sua solicitação
+    enviar_notificacao(f"✅ TUDO LIMPO ({hoje})", "Sem tarefas hoje.")
+
