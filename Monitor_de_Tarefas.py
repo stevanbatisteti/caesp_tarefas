@@ -8,7 +8,7 @@ from datetime import datetime
 import time
 
 # --- CONFIGURAÇÃO ---
-MEU_TOPICO = "tarefas_caesp_8ano_xyz" 
+MEU_TOPICO = "caesp_tarefas" 
 
 def enviar_notificacao_ios(titulo, mensagem):
     """Envia push para o app ntfy no iOS/Android."""
@@ -28,11 +28,11 @@ def enviar_notificacao_ios(titulo, mensagem):
     except Exception as e:
         print(f"❌ Erro ao enviar: {e}")
 
-# --- CONFIGURAÇÃO DO NAVEGADOR (MODO OCULTO) ---
+# --- CHROME EM MODO SERVIDOR (LINUX) ---
 chrome_options = Options()
-chrome_options.add_argument("--headless") 
-chrome_options.add_argument("--disable-gpu")
+chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
