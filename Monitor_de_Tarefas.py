@@ -46,7 +46,7 @@ chrome_options.add_argument("--log-level=3")
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
 hoje = datetime.today().strftime("%d/%m")
-URL = "https://www.caesp.com.br/web/muraldetarefaspub.php?action=getMateriaisPub&perletivo=2026C&codtur=8%C2%BA%20Ano%20A/9"
+URL = "https://www.caesp.com.br/web/muraldetarefaspub.php?action=getMateriaisPub&perletivo=2026C&codtur=8%C2%BA%20Ano%20B/9"
 
 try:
     print(f"🔍 Iniciando busca no portal CAESP para a data: {hoje}")
@@ -82,4 +82,5 @@ else:
     print("✅ Nenhuma tarefa para hoje. Enviando confirmação de execução.")
     # Texto alterado conforme sua solicitação
     enviar_notificacao(f"✅ TUDO LIMPO ({hoje})", "Sem tarefas hoje.")
+
 
