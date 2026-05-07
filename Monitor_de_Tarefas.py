@@ -1,7 +1,7 @@
 import requests
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -37,7 +37,9 @@ chrome_options.add_argument("--log-level=3")
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
-hoje = datetime.today().strftime("%d/%m")
+
+fuso_brasilia = timezone(timedelta(hours=-3))
+hoje = datetime.now(fuso_brasilia).strftime("%d/%m")
 URL = "https://www.caesp.com.br/web/muraldetarefaspub.php?action=getMateriaisPub&perletivo=2026C&codtur=8%C2%BA%20Ano%20B/9"
 
 try:
