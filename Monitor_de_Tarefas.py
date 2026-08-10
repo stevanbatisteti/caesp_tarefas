@@ -37,7 +37,6 @@ chrome_options.add_argument("--log-level=3")
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
-
 fuso_brasilia = timezone(timedelta(hours=-3))
 hoje = datetime.now(fuso_brasilia).strftime("%d/%m")
 URL = "https://www.caesp.com.br/web/muraldetarefaspub.php?action=getMateriaisPub&perletivo=2026C&codtur=8%C2%BA%20Ano%20B/9"
@@ -57,8 +56,15 @@ try:
                 materia = colunas[1].text.strip().upper()
                 descricao = colunas[2].text.strip().upper()
 
-                if "EM CASA" in descricao:
-                    tarefa = descricao.replace("EM CASA", "").replace("=", "").replace("-", "").strip()
+                # Modificação feita aqui para aceitar "EM CASA" ou "TAREFA"
+                if "EM CASA" in descricao or "TAREFA" in descricao:
+                    tarefa = (
+                        descricao.replace("EM CASA", "")
+                                 .replace("TAREFA", "")
+                                 .replace("=", "")
+                                 .replace("-", "")
+                                 .strip()
+                    )
                     materias_em_casa.append(f"{materia}: {tarefa.capitalize()}")
 finally:
     driver.quit()
